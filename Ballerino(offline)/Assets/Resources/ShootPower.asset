@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: ShootPower
   cardImage: {fileID: 21300000, guid: 5d13e8f5570c6204db660d5df4d9d08a, type: 3}
-  cooldownTime: 0
+  cooldownTime: 10

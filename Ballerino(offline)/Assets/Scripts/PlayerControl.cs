@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     [Header("Variable")]
-    [SerializeField] private float moveSpeed = 5f;
+    public float moveSpeed = 5f;
     [SerializeField] private float drag = 0.95f;
     [SerializeField] private float shootPower = 10f;
     [SerializeField] private float shootRadius;
@@ -36,7 +36,6 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(shootKey))
         {
             ShootBall();
-            
         }
     }
 

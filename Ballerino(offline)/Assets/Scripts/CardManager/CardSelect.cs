@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class CardSelect : MonoBehaviour
 {
     public Button[] cardButtons;
     public Image[] selectedCardSlots;
-
+    public string playerPrefsKey = "SelectedCards";
     private AbilityStrategy[] selectedCards;
-
     void Start()
     {
         selectedCards = new AbilityStrategy[selectedCardSlots.Length];
+        LoadSelectedCards();
 
         foreach (Button button in cardButtons)
         {
@@ -21,8 +22,6 @@ public class CardSelect : MonoBehaviour
         {
             slot.GetComponent<Button>().onClick.AddListener(() => OnSlotClicked(slot));
         }
-
-        LoadSelectedCards();
     }
 
     void OnCardSelected(Button button)
@@ -40,7 +39,7 @@ public class CardSelect : MonoBehaviour
                     button.image.color = new Color(button.image.color.r, button.image.color.g, button.image.color.b, 0.5f);
                     button.interactable = false;
 
-                    SaveSelectedCards(); 
+                    SaveSelectedCards();
                     return;
                 }
             }
@@ -55,7 +54,6 @@ public class CardSelect : MonoBehaviour
         {
             if (selectedCards[slotIndex] != null)
             {
-               
                 foreach (Button button in cardButtons)
                 {
                     CardHolder cardHolder = button.GetComponent<CardHolder>();
@@ -69,32 +67,29 @@ public class CardSelect : MonoBehaviour
 
                 selectedCards[slotIndex] = null;
                 slot.sprite = null;
-                SaveSelectedCards(); 
+                SaveSelectedCards();
             }
         }
     }
-
     public void SaveSelectedCards()
     {
         for (int i = 0; i < selectedCards.Length; i++)
         {
             if (selectedCards[i] != null)
             {
-                PlayerPrefs.SetString("SelectedCard" + i, selectedCards[i].name);
+                PlayerPrefs.SetString(playerPrefsKey + i, selectedCards[i].name);
             }
             else
             {
-                PlayerPrefs.DeleteKey("SelectedCard" + i);
+                PlayerPrefs.DeleteKey(playerPrefsKey + i);
             }
         }
-        PlayerPrefs.Save();
     }
-
-    private void LoadSelectedCards()
+    void LoadSelectedCards()
     {
-        for (int i = 0; i < selectedCardSlots.Length; i++)
+        for(int i = 0; i < selectedCards.Length;i++)
         {
-            string cardName = PlayerPrefs.GetString("SelectedCard" + i, null);
+            string cardName = PlayerPrefs.GetString(playerPrefsKey + i, null);
             if (!string.IsNullOrEmpty(cardName))
             {
                 AbilityStrategy card = Resources.Load<AbilityStrategy>(cardName);
@@ -102,8 +97,6 @@ public class CardSelect : MonoBehaviour
                 {
                     selectedCards[i] = card;
                     selectedCardSlots[i].sprite = card.cardImage;
-
-                   
                     foreach (Button button in cardButtons)
                     {
                         CardHolder cardHolder = button.GetComponent<CardHolder>();

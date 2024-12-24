@@ -7,12 +7,12 @@ public class ShootPowerSkill : AbilityStrategy
 {
     public override void ApplyEffect(PlayerControl player)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("hız ekleniyor2");
     }
 
     public override void RemoveEffect(PlayerControl player)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("asd");
     }
 
 }
