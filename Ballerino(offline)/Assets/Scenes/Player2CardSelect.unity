@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ced7710b9d21d4b862d0718a8fc3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 11400000, guid: 6ef91d1b77b99cd40a9282dc07b6ea00, type: 2}
+  ability: {fileID: 11400000, guid: 09b70a1068046df4595701e093e08bba, type: 2}
 --- !u!114 &260505033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,6 +1063,7 @@ GameObject:
   - component: {fileID: 1059589632}
   - component: {fileID: 1059589631}
   - component: {fileID: 1059589633}
+  - component: {fileID: 1059589634}
   m_Layer: 5
   m_Name: Slot5
   m_TagString: Untagged
@@ -1172,6 +1173,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1059589634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059589629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ced7710b9d21d4b862d0718a8fc3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 9aaa7c91896e63048bbbe82930d99ddb, type: 2}
 --- !u!1 &1065305425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,8 +1685,8 @@ GameObject:
   - component: {fileID: 1832165421}
   - component: {fileID: 1832165423}
   - component: {fileID: 1832165422}
-  - component: {fileID: 1832165425}
   - component: {fileID: 1832165424}
+  - component: {fileID: 1832165425}
   m_Layer: 5
   m_Name: Slot4
   m_TagString: Untagged
@@ -1794,7 +1808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ced7710b9d21d4b862d0718a8fc3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 11400000, guid: 524eef1dd727fe04d9327af1b69a0f6d, type: 2}
+  ability: {fileID: 11400000, guid: 7456f2b7308defd4da9bf93473c2d200, type: 2}
 --- !u!1 &1891516873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1807,6 +1821,7 @@ GameObject:
   - component: {fileID: 1891516876}
   - component: {fileID: 1891516875}
   - component: {fileID: 1891516877}
+  - component: {fileID: 1891516878}
   m_Layer: 5
   m_Name: Slot2
   m_TagString: Untagged
@@ -1916,6 +1931,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1891516878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891516873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ced7710b9d21d4b862d0718a8fc3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 7b3f5efcd9081fd4692299265f9aa8ea, type: 2}
 --- !u!1 &1997844922
 GameObject:
   m_ObjectHideFlags: 0

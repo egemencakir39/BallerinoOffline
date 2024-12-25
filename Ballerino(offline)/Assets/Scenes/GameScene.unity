@@ -372,13 +372,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c970e29bc7b77c4c8e7bb9d78384f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 7
   drag: 0.95
   shootPower: 2
   shootRadius: 0.45
   horizontalInput: Horizontal2
   verticalInput: Vertical2
   shootKey: 256
+  rb: {fileID: 0}
   ball: {fileID: 0}
 --- !u!58 &120327331
 CircleCollider2D:
@@ -2420,6 +2421,8 @@ MonoBehaviour:
   player1: {fileID: 1911774269}
   player2: {fileID: 120327333}
   ball: {fileID: 388555238}
+  cardManager: {fileID: 1911774270}
+  cardManager2: {fileID: 120327334}
   player1StartPosition: {x: -3.5, y: 0}
   player2StartPosition: {x: 3.5, y: 0}
   ballStartPosition: {x: 0, y: 0}
@@ -3559,13 +3562,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c970e29bc7b77c4c8e7bb9d78384f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 7
   drag: 0.95
   shootPower: 2
   shootRadius: 0.45
   horizontalInput: Horizontal
   verticalInput: Vertical
   shootKey: 32
+  rb: {fileID: 0}
   ball: {fileID: 0}
 --- !u!212 &1911774268
 SpriteRenderer:

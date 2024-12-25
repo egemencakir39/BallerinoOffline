@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour
     [Header("Variable")]
     public float moveSpeed = 5f;
     [SerializeField] private float drag = 0.95f;
-    [SerializeField] private float shootPower = 10f;
+    public float shootPower = 10f;
     [SerializeField] private float shootRadius;
     [SerializeField] private string horizontalInput = "Horizontal";
     [SerializeField] private string verticalInput = "Vertical";
@@ -15,7 +15,7 @@ public class PlayerControl : MonoBehaviour
 
 
     private Vector2 movement;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     public GameObject ball;
     private void Start()
     {

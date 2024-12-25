@@ -19,6 +19,8 @@ public class Manager : MonoBehaviour
     [SerializeField] private Transform player1;
     [SerializeField] private Transform player2;
     [SerializeField] private Transform ball;
+    [SerializeField] private CardManager cardManager;
+    [SerializeField] private CardManager cardManager2;
 
 
     [Header("Position")]
@@ -127,6 +129,8 @@ public class Manager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         EnablePlayerMovement(false);
+        cardManager.RemoveAllEffects();
+        cardManager2.RemoveAllEffects();
         ResetPosition();
         countDownText.gameObject.SetActive(true);
         int countDown = 3;
