@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -12,13 +13,16 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private string horizontalInput = "Horizontal";
     [SerializeField] private string verticalInput = "Vertical";
     [SerializeField] private KeyCode shootKey = KeyCode.Space;
+    private Camera mainCamera;
 
 
     private Vector2 movement;
     public Rigidbody2D rb;
     public GameObject ball;
     private void Start()
-    {
+    { 
+        mainCamera = Camera.main;
+
         rb = GetComponent<Rigidbody2D>();
         ball = GameObject.FindWithTag("Ball");
     }
@@ -59,6 +63,7 @@ public class PlayerControl : MonoBehaviour
         foreach (Collider2D coll in colls) {
             if (coll.gameObject == ball)
             {
+                ShotEffect();
                 Vector2 shootDir = (ball.transform.position - transform.position).normalized;
                 Rigidbody2D ballRb = ball.GetComponent<Rigidbody2D>();
                 ballRb.AddForce(shootDir * shootPower, ForceMode2D.Impulse);
@@ -66,7 +71,25 @@ public class PlayerControl : MonoBehaviour
                 break;
             }
         }
+        
+    }
+    public void ShotEffect()
+    {
 
+        if (mainCamera == null)
+        {
+            Debug.LogError("Ana kamera bulunamadı!");
+            return;
+        }
+
+        mainCamera.transform.DOShakePosition(
+            duration: 0.1f,   // Sallama süresi (saniye)
+            strength: 0.1f,   // Sallama gücü
+            vibrato: 10,      // Titreşim sayısı
+            randomness: 90,   // Rastgelelik derecesi
+            snapping: false,  // Eksenlere yapışma
+            fadeOut: true     // Efektin zamanla sönmesi
+        );
     }
     private void OnDrawGizmos()
     {

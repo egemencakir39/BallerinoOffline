@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Manager : MonoBehaviour
 {
@@ -110,15 +111,37 @@ public class Manager : MonoBehaviour
     }
     public void Player1Score()
     {
+        ScoreEffect();
         player1Score++;
         UpdateScoreText();
         StartCoroutine(HandleGoalScored());
     }
     public void Player2Score()
     {
+        ScoreEffect();
         player2Score++;
         UpdateScoreText();
         StartCoroutine(HandleGoalScored());
+    }
+
+    public void ScoreEffect()
+    {
+        Camera mainCamera = Camera.main;
+
+        if (mainCamera == null)
+        {
+            Debug.LogError("Ana kamera bulunamadı!");
+            return;
+        }
+
+        mainCamera.transform.DOShakePosition(
+            duration: 0.5f,   // Sallama süresi (saniye)
+            strength: 0.5f,   // Sallama gücü
+            vibrato: 10,      // Titreşim sayısı
+            randomness: 90,   // Rastgelelik derecesi
+            snapping: false,  // Eksenlere yapışma
+            fadeOut: true     // Efektin zamanla sönmesi
+        );
     }
     private void UpdateScoreText()
     {

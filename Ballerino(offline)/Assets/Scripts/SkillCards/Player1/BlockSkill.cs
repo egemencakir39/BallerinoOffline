@@ -23,13 +23,23 @@ public class BlockSkill : AbilityStrategy
     private IEnumerator BlockSpawn(PlayerControl player)
     {
         block = Instantiate(blockPrefab, blockPrefabSpawnPoint, Quaternion.identity);
-        yield return new WaitForSeconds(duration);
-        Destroy(block);
+        SpriteRenderer spriteRenderer = block.GetComponent<SpriteRenderer>();
+        
+        
+        Debug.Log((duration * 70) / 100);
+        yield return new WaitForSeconds((duration * 70) / 100);
+        
+        
+        block.GetComponent<Block>().FlashStart((duration * 30) / 100);
+        Debug.Log((duration * 30) / 100);
+        yield return new WaitForSeconds(((duration * 30) / 100));
+        
+        Debug.Log("bitti");
         IsEffectActive = false;
         StartCooldown();
-      
-
     }
+
+
     public override void RemoveEffect(PlayerControl player)
     {
         if (blockSpawnCor != null)
