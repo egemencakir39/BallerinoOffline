@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    [SerializeField] private SoundManager soundManager;
     [Header("Variable")]
     public float moveSpeed = 5f;
     [SerializeField] private float drag = 0.95f;
@@ -67,7 +68,7 @@ public class PlayerControl : MonoBehaviour
                 Vector2 shootDir = (ball.transform.position - transform.position).normalized;
                 Rigidbody2D ballRb = ball.GetComponent<Rigidbody2D>();
                 ballRb.AddForce(shootDir * shootPower, ForceMode2D.Impulse);
-                Debug.Log("vurdu");
+                soundManager.Shoot();
                 break;
             }
         }

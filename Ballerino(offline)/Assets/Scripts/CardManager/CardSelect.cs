@@ -24,7 +24,7 @@ public class CardSelect : MonoBehaviour
         }
     }
 
-    void OnCardSelected(Button button)
+    void OnCardSelected(Button button)                 //kart butonuna tıklandığında butonu kapatır ve rengini yarı saydam yapar
     {
         CardHolder cardHolder = button.GetComponent<CardHolder>();
         if (cardHolder != null && cardHolder.ability != null)
@@ -46,7 +46,7 @@ public class CardSelect : MonoBehaviour
         }
     }
 
-    void OnSlotClicked(Image slot)
+    void OnSlotClicked(Image slot)             //dolu slota tıklandığında o slotu boşaltır
     {
         int slotIndex = System.Array.IndexOf(selectedCardSlots, slot);
 
@@ -71,7 +71,7 @@ public class CardSelect : MonoBehaviour
             }
         }
     }
-    public void SaveSelectedCards()
+    public void SaveSelectedCards()            //seçilen kartları kayıt eder
     {
         for (int i = 0; i < selectedCards.Length; i++)
         {
@@ -85,7 +85,7 @@ public class CardSelect : MonoBehaviour
             }
         }
     }
-    void LoadSelectedCards()
+    void LoadSelectedCards()          //seçilen kartları boş slotlara yükler
     {
         for(int i = 0; i < selectedCards.Length;i++)
         {

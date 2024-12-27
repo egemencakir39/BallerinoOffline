@@ -6,6 +6,7 @@ public class Goal : MonoBehaviour
 {
     public bool isPlayer1Goal;
     private Manager gameManager;
+    [SerializeField] private SoundManager soundManager;
    
     void Start()
     {
@@ -16,6 +17,7 @@ public class Goal : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
+            soundManager.GoalAmbience();
             if (isPlayer1Goal)
             {
                 gameManager.Player2Score();

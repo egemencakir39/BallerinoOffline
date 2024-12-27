@@ -18,7 +18,7 @@ public class CardManager : MonoBehaviour
     {
         LoadSelectedCards();
 
-        if (selectedCards != null)
+        if (selectedCards != null)             //seçili olan kartların imagelerini slotlara yerleştirir
         {
             for (int i = 0; i < cardSlots.Length; i++)
             {
@@ -36,7 +36,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    private void LoadSelectedCards()
+    private void LoadSelectedCards()            //seçili olan kartları slotlara yerleştirir
     {
        selectedCards = new AbilityStrategy[cardSlots.Length];
        for (int i = 0; i < cardSlots.Length; i++)
@@ -55,7 +55,7 @@ public class CardManager : MonoBehaviour
     }
     void Update()
     {
-        for (int i = 0; i < selectedCards.Length; i++)
+        for (int i = 0; i < selectedCards.Length; i++)        //cooldown süreleri
         {
             if (selectedCards[i] != null)
             {
@@ -83,7 +83,7 @@ public class CardManager : MonoBehaviour
             UseCard(2);
         }
     }
-    void UseCard(int slotIndex)
+    void UseCard(int slotIndex)              //slotlardaki kartların kullanımı
     {
         if (selectedCards != null && slotIndex < selectedCards.Length && selectedCards[slotIndex] != null)
         {
@@ -91,27 +91,10 @@ public class CardManager : MonoBehaviour
             {
                 selectedCards[slotIndex].ApplyEffect(player);
                 cardSlots[slotIndex].color = new Color(1, 1, 1, 0.5f);
-                SaveSelectedCards();
             }
         }
     }
-    
-    public void SaveSelectedCards()
-    {
-        for (int i = 0; i < selectedCards.Length; i++)
-        {
-            if (selectedCards[i] != null)
-            {
-                PlayerPrefs.SetString(playerPrefsKey + i, selectedCards[i].name);  
-            }
-            else
-            {
-                PlayerPrefs.DeleteKey(playerPrefsKey + i);
-            }
-        }
-        PlayerPrefs.Save();
-    }
-    public void RemoveAllEffects()
+    public void RemoveAllEffects()          //oyunda gol olduğunda skill etkilerini kaldırır
     {
         for (int i = 0; i < selectedCards.Length; i++)
         {
