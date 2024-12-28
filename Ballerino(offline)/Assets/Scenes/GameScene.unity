@@ -438,7 +438,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1000
   m_Sprite: {fileID: 21300000, guid: 0813e75907f9d0242b9ceb27ca6bc8a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2282,7 +2282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30011ca758bbadc46ac602189af288f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoot: {fileID: 8300000, guid: 6ec4fdceb6e436044a0d80a573fc1078, type: 3}
+  shoot: {fileID: 8300000, guid: 3e003921fce8d1749a561b9a2ac9a6fa, type: 3}
   goalAmbience: {fileID: 8300000, guid: d4e88bcb3d8f8fb48b17e9da2682bff8, type: 3}
 --- !u!82 &1503169947
 AudioSource:
@@ -2439,8 +2439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2aff49973e88ea46a5c5b114bdaf5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1ScoreText: {fileID: 1767419650}
-  player2ScoreText: {fileID: 1586463928}
+  player1ScoreText: {fileID: 1586463928}
+  player2ScoreText: {fileID: 1767419650}
   countDownText: {fileID: 1756209425}
   timerText: {fileID: 347434545}
   player1: {fileID: 1911774269}
@@ -3555,7 +3555,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1000
   m_Sprite: {fileID: 21300000, guid: 6cc5632782eed09499ba8f3ef3fdcc1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

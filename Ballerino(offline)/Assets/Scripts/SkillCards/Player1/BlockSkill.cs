@@ -26,15 +26,12 @@ public class BlockSkill : AbilityStrategy
         SpriteRenderer spriteRenderer = block.GetComponent<SpriteRenderer>();
         
         
-        Debug.Log((duration * 70) / 100);
         yield return new WaitForSeconds((duration * 70) / 100);
         
         
         block.GetComponent<Block>().FlashStart((duration * 30) / 100);
-        Debug.Log((duration * 30) / 100);
         yield return new WaitForSeconds(((duration * 30) / 100));
         
-        Debug.Log("bitti");
         IsEffectActive = false;
         StartCooldown();
     }
