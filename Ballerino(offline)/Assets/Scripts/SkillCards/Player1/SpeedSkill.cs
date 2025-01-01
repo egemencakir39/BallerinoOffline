@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using System.Threading;
+using System;
 using UnityEngine;
 
 
@@ -9,30 +12,35 @@ public class SpeedSkill : AbilityStrategy
 {
     [SerializeField] private float duration = 15f;
     [SerializeField] private float speedBoost = 2f;
-    private Coroutine speedEffectCor;
+    private CancellationTokenSource speedCts;
     public override void ApplyEffect(PlayerControl player)
     {
         if (!IsOnCooldown && !IsEffectActive)
         {
-            speedEffectCor = player.StartCoroutine(ResetSpeedEffect(player));
+            speedCts = new CancellationTokenSource();
+            speedEffect(player, speedCts.Token).Forget();
             IsEffectActive = true;
         }
     }
-    private IEnumerator ResetSpeedEffect(PlayerControl player)
+    private async UniTaskVoid speedEffect(PlayerControl player, CancellationToken token)
     {
         player.moveSpeed = player.moveSpeed + speedBoost;
-        yield return new WaitForSeconds(duration);
-        player.moveSpeed = player.moveSpeed - speedBoost;
-        StartCooldown();
-        IsEffectActive = false;
+        await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: token);
 
+        if (!token.IsCancellationRequested)
+        {
+            player.moveSpeed = player.moveSpeed - speedBoost;
+            StartCooldown();
+            IsEffectActive = false;
+        }
     }
     public override void RemoveEffect(PlayerControl player)
     {
-        if (speedEffectCor != null)
+        if (speedCts != null)
         {
-            player.StopCoroutine(speedEffectCor);
-            speedEffectCor = null;
+            speedCts.Cancel();
+            speedCts.Dispose();
+            speedCts = null;
             player.moveSpeed = 7f;
             IsEffectActive = false;
             StartCooldown();

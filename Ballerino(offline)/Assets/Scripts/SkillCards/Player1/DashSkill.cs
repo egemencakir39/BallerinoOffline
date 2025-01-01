@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using System.Threading;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DashSkill", menuName = "Skill/DashSkill")]
@@ -7,34 +10,40 @@ public class DashSkill : AbilityStrategy
 {
     [SerializeField] private float duration = 0.25f;
     [SerializeField] private float dashForce = 10f;
-    private Coroutine dashCor;
+    private CancellationTokenSource dashCts;
     public override void ApplyEffect(PlayerControl player)
     {
         if (!IsOnCooldown && !IsEffectActive)
         {
-            dashCor = player.StartCoroutine(Dash(player));
+            dashCts = new CancellationTokenSource();
+            dash(player,dashCts.Token).Forget();
             IsEffectActive = true;
+            
         }
     }
 
-    private IEnumerator Dash(PlayerControl player)
+    private async UniTaskVoid dash(PlayerControl player, CancellationToken token)
     {
         Vector2 dashDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         if (dashDir != Vector2.zero)
         {
             player.rb.AddForce(dashDir * dashForce, ForceMode2D.Impulse);
         }
-        yield return new WaitForSeconds(duration);
-        IsEffectActive = false;
-        StartCooldown();
+        await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: token);
+        if (!token.IsCancellationRequested)
+        {
+            IsEffectActive = false;
+            StartCooldown();
+        }
     }
 
     public override void RemoveEffect(PlayerControl player)
     {
-        if (dashCor != null)
+        if (dashCts != null)
         {
-            player.StopCoroutine(dashCor);
-            dashCor = null;
+            dashCts.Cancel();
+            dashCts.Dispose();
+            dashCts = null;
             IsEffectActive = false;
             StartCooldown();
         }

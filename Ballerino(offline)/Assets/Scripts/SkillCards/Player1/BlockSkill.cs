@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using System.Threading;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Block Skill", menuName = "Skill/Block Skill")]
@@ -9,28 +12,28 @@ public class BlockSkill : AbilityStrategy
     [SerializeField] private float duration = 10f;
     [SerializeField] private Vector2 blockPrefabSpawnPoint;
 
-    private Coroutine blockSpawnCor;
+    private CancellationTokenSource blockCts;
     private GameObject block;
     public override void ApplyEffect(PlayerControl player)
     {
         if (!IsOnCooldown && !IsEffectActive)
         {
-            blockSpawnCor = player.StartCoroutine(BlockSpawn(player));
+            blockCts = new CancellationTokenSource();
+            blockSpawn(player,blockCts.Token).Forget();
             IsEffectActive = true;
         }
 
     }
-    private IEnumerator BlockSpawn(PlayerControl player)
+    private async UniTaskVoid blockSpawn(PlayerControl player, CancellationToken token)
     {
         block = Instantiate(blockPrefab, blockPrefabSpawnPoint, Quaternion.identity);
         SpriteRenderer spriteRenderer = block.GetComponent<SpriteRenderer>();
         
-        
-        yield return new WaitForSeconds((duration * 70) / 100);
+        await UniTask.Delay((TimeSpan.FromSeconds(duration * 70) /100), cancellationToken: token);
         
         
         block.GetComponent<Block>().FlashStart((duration * 30) / 100);
-        yield return new WaitForSeconds(((duration * 30) / 100));
+        await UniTask.Delay((TimeSpan.FromSeconds(duration*30)/100), cancellationToken: token);
         
         IsEffectActive = false;
         StartCooldown();
@@ -39,10 +42,10 @@ public class BlockSkill : AbilityStrategy
 
     public override void RemoveEffect(PlayerControl player)
     {
-        if (blockSpawnCor != null)
+        if (blockCts != null)
         {
-            player.StopCoroutine(blockSpawnCor);
-            blockSpawnCor = null;
+            blockCts.Cancel();
+            blockCts.Dispose();
         }
         if (block != null)
         {

@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using System.Threading;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ShootPower", menuName = "Skill/ShootPower")]
@@ -7,35 +10,44 @@ public class ShootPowerSkill : AbilityStrategy
 {
     [SerializeField] private float duration = 10f;
     [SerializeField] private float shootPowerBoost = 2f;
-    private Coroutine shootPowerCor;
+    private CancellationTokenSource shootPowerCts;
+
     public override void ApplyEffect(PlayerControl player)
     {
         if (!IsOnCooldown && !IsEffectActive)
         {
-            shootPowerCor = player.StartCoroutine(ShootPower(player));
+            shootPowerCts = new CancellationTokenSource();
+            ShootPower(player, shootPowerCts.Token).Forget(); 
             IsEffectActive = true;
         }
     }
 
-    private IEnumerator ShootPower(PlayerControl player)
+    private async UniTaskVoid ShootPower(PlayerControl player, CancellationToken token)
     {
-        player.shootPower = player.shootPower + shootPowerBoost;
-        yield return new WaitForSeconds(duration);
-        player.shootPower = player.shootPower - shootPowerBoost;
-        StartCooldown();
-        IsEffectActive = false;
+        player.shootPower += shootPowerBoost;
+
+       
+        await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: token).SuppressCancellationThrow();
+
+        if (!token.IsCancellationRequested)
+        {
+            player.shootPower -= shootPowerBoost;
+            StartCooldown();
+            IsEffectActive = false;
+        }
     }
 
     public override void RemoveEffect(PlayerControl player)
     {
-        if (shootPowerCor != null)
+        if (shootPowerCts != null)
         {
-            player.StopCoroutine(shootPowerCor);
-            shootPowerCor = null;
-            player.shootPower = 2f;
-            IsEffectActive = false;
-            StartCooldown();
+            shootPowerCts.Cancel(); 
+            shootPowerCts.Dispose();
+            shootPowerCts = null;
         }
-    }
 
+        player.shootPower = 2f; 
+        IsEffectActive = false;
+        StartCooldown();
+    }
 }
