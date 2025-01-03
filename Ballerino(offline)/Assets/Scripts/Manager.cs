@@ -22,6 +22,7 @@ public class Manager : MonoBehaviour
     [SerializeField] private Transform ball;
     [SerializeField] private CardManager cardManager;
     [SerializeField] private CardManager cardManager2;
+    [SerializeField] private SoundManager soundManager;
 
 
     [Header("Position")]
@@ -51,6 +52,7 @@ public class Manager : MonoBehaviour
 
         timer = gameDuration;
         UpdateTimerText();
+        soundManager.StartSound();
     }
 
     private void Update()
@@ -101,6 +103,7 @@ public class Manager : MonoBehaviour
         {
             countDownText.text = "It's a Scoreless";
         }
+        soundManager.EndSound();
         StartCoroutine(HandleGameOver());
     }
 

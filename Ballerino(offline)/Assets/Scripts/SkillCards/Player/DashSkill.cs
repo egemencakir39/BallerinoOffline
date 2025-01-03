@@ -11,6 +11,8 @@ public class DashSkill : AbilityStrategy
     [SerializeField] private float duration = 0.25f;
     [SerializeField] private float dashForce = 10f;
     private CancellationTokenSource dashCts;
+    [SerializeField] private string hInput = "Horizontal";
+    [SerializeField] private string vInput = "Vertical";
     public override void ApplyEffect(PlayerControl player)
     {
         if (!IsOnCooldown && !IsEffectActive)
@@ -24,7 +26,7 @@ public class DashSkill : AbilityStrategy
 
     private async UniTaskVoid dash(PlayerControl player, CancellationToken token)
     {
-        Vector2 dashDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        Vector2 dashDir = new Vector2(Input.GetAxis(hInput), Input.GetAxis(vInput)).normalized;
         if (dashDir != Vector2.zero)
         {
             player.rb.AddForce(dashDir * dashForce, ForceMode2D.Impulse);

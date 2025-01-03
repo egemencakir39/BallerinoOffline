@@ -8,6 +8,8 @@ public class SoundManager : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip shoot;
     [SerializeField] private AudioClip goalAmbience;
+    [SerializeField] private AudioClip startSound;
+    [SerializeField] private AudioClip endSound;
 
     private void Start()
     {
@@ -23,5 +25,15 @@ public class SoundManager : MonoBehaviour
     public void GoalAmbience()
     {
         audioSource.PlayOneShot(goalAmbience);
+    }
+
+    public void StartSound()
+    {
+        audioSource.PlayOneShot(startSound);
+    }
+
+    public void EndSound()
+    {
+        audioSource.PlayOneShot(endSound);
     }
 }

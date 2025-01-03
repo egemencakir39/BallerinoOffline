@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53434750b3acbe34aa72d32b3d0e05ee, type: 3}
-  m_Name: SpeedSkill2
+  m_Script: {fileID: 11500000, guid: d096b73750a098c4193583ca2e024d45, type: 3}
+  m_Name: TeleportBall
   m_EditorClassIdentifier: 
-  cardName: Speed
-  cardImage: {fileID: 21300000, guid: 5aca1b30cb5a9db45a737ced630441cb, type: 3}
-  cooldownTime: 10
-  duration: 15
-  speedBoost: 2
+  cardName: tpball
+  cardImage: {fileID: 21300000, guid: c3f670844fbb25448a969d59a7034ade, type: 3}
+  cooldownTime: 20
