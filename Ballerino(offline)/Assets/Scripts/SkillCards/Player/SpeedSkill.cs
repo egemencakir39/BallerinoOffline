@@ -26,13 +26,10 @@ public class SpeedSkill : AbilityStrategy
     {
         player.moveSpeed = player.moveSpeed + speedBoost;
         await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: token);
-
-        if (!token.IsCancellationRequested)
-        {
-            player.moveSpeed = player.moveSpeed - speedBoost;
-            StartCooldown();
-            IsEffectActive = false;
-        }
+        player.moveSpeed = player.moveSpeed - speedBoost; 
+        StartCooldown(); 
+        IsEffectActive = false;
+        
     }
     public override void RemoveEffect(PlayerControl player)
     {

@@ -32,11 +32,9 @@ public class DashSkill : AbilityStrategy
             player.rb.AddForce(dashDir * dashForce, ForceMode2D.Impulse);
         }
         await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: token);
-        if (!token.IsCancellationRequested)
-        {
-            IsEffectActive = false;
-            StartCooldown();
-        }
+        IsEffectActive = false; 
+        StartCooldown();
+        
     }
 
     public override void RemoveEffect(PlayerControl player)

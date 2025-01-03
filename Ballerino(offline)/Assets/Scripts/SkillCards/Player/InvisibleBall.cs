@@ -31,12 +31,9 @@ public class InvisibleBall : AbilityStrategy
         BallRenderer.enabled = false;
         await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: token);
         BallRenderer.enabled = true;
-
-        if (!token.IsCancellationRequested)
-        {
-            IsEffectActive = false;
-            StartCooldown();
-        }
+        IsEffectActive = false; 
+        StartCooldown();
+        
     }
 
     public override void RemoveEffect(PlayerControl player)

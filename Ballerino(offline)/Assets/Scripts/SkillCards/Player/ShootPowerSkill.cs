@@ -25,16 +25,10 @@ public class ShootPowerSkill : AbilityStrategy
     private async UniTaskVoid ShootPower(PlayerControl player, CancellationToken token)
     {
         player.shootPower += shootPowerBoost;
-
-       
         await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: token).SuppressCancellationThrow();
-
-        if (!token.IsCancellationRequested)
-        {
-            player.shootPower -= shootPowerBoost;
-            StartCooldown();
-            IsEffectActive = false;
-        }
+        player.shootPower -= shootPowerBoost;
+        StartCooldown();
+        IsEffectActive = false;
     }
 
     public override void RemoveEffect(PlayerControl player)
