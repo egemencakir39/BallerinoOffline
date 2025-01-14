@@ -30,4 +30,9 @@ public class SceneManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Player2CardSelect");
     }
+
+    public void quit()
+    {
+        Application.Quit();
+    }
 }
