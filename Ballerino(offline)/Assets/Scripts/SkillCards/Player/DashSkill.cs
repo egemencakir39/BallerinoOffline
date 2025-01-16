@@ -30,8 +30,10 @@ public class DashSkill : AbilityStrategy
         if (dashDir != Vector2.zero)
         {
             player.rb.AddForce(dashDir * dashForce, ForceMode2D.Impulse);
+            player.trailRenderer.emitting = true;
         }
         await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: token);
+        player.trailRenderer.emitting = false;
         IsEffectActive = false; 
         StartCooldown();
         

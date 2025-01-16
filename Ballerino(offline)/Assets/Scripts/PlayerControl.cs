@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private string verticalInput = "Vertical";
     [SerializeField] private KeyCode shootKey = KeyCode.Space;
     private Camera mainCamera;
+    public TrailRenderer trailRenderer;
 
 
     private Vector2 movement;
