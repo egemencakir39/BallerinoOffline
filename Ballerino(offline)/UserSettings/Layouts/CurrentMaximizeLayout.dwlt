@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 93
+  controlID: 94
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -85,7 +85,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 0
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
       y: 21
       width: 1086
       height: 545
-    m_Scale: {x: 0.5046296, y: 0.5046296}
+    m_Scale: {x: 0.5240741, y: 0.5240741}
     m_Translation: {x: 543, y: 272.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -106,10 +106,10 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -1076.0367
-      y: -540
-      width: 2152.0735
-      height: 1080
+      x: -1036.113
+      y: -519.96466
+      width: 2072.226
+      height: 1039.9293
     m_MinimalGUI: 1
   m_defaultScale: 0.5240741
   m_LastWindowPixelSize: {x: 1086, y: 566}
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 94
+  controlID: 95
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 95
+  controlID: 96
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,9 +226,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 0c610000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: f8a4ffffe0a6ffff18a7ffff4aa7ffff7ca7ffffaea7ffff00a8ffff7ea8ffff04a9ffff8ea9ffff10aaffff9eaaffff1cabffff9aabffff10acffff62acffff94acffffc6acfffffcacffff2eadffff18aeffff4aaeffff7caeffffb0aeffffe4aeffffb6affffff6afffff46b2ffff7cb2ffffaeb2ffffe0b2ffff12b3ffff44b3ffff76b3ffffa8b3ffffdab3ffff0cb4ffff3eb4ffff7ab4ffffacb4ffffdeb4ffff10b5ffff42b5ffff74b5ffffa6b5ffffd8b5ffff0ab6ffff3eb6ffffa2b7ffff06b8ffff46b8ffff8eb8ffffceb8ffff0eb9ffff4eb9ffff8eb9ffffceb9ffff0ebaffff4ebaffff8ebaffffcebaffff0ebbffff4ebbffff8ebbffffcebbffff3cbcffff7cbcffffbcbcfffffcbcffff3cbdffff7ebdffff26c0ffff74c0ffffccc0ffff0cc1ffff4cc1ffff8cc1ffffccc1ffff06c2ffff46c2ffff86c2ffffc6c2ffff20c3ffff8ac4ffffcec4ffff0ec5ffff4ec5ffff8ec5ffffcec5ffff0ec6ffff4ec6ffff88c6ffffccc6ffff0ec7fffffec9ffff74caffffb4cafffff4caffffbecbfffffecbffff3eccffff7eccffffbeccffff00cdffff40cdffff80cdffffc0cdffff00ceffff42ceffff84ceffff68d0ffff08d1ffff4ad1ffff5ad2ffff9ad2ffff7ed3ffffbed3ffff64d9ffffded9ffff20daffff34dbffffe6dbffff26dcffff66dcffff20deffff64deffffa4deffffe4deffff24dfffff64dfffffa4dfffffe4dfffff24e0ffff64e0ffffa4e0ffffe4e0ffff24e1ffff66e1ffffa6e1ffffe6e1ffff26e2ffff66e2ffffa6e2ffff84e4ffffc6e4ffffb2e5fffff2e5ffff84e6ffffc6e6ffff0ee8ffff4ee8ffff8ee8ffff22fbffffde5f00007e600000a8650000e6680000146b0000586e00000e83000054860000948d0000f88d00003c91000070930000b6960000ce97000040a9000056aa00006cb700009ac5000020130100
+      m_ExpandedIDs: 24fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: -0.472001, y: 0.91162944, z: -0.050021313}
     speed: 2
-    m_Value: {x: -0.03307861, y: 1.071707, z: -0.047232836}
+    m_Value: {x: -0.472001, y: 0.91162944, z: -0.050021313}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 6.475397
     speed: 2
-    m_Value: 6.1965523
+    m_Value: 6.475397
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -707,23 +707,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/PhysicsMaterial
     m_Globs: []
     m_OriginalText: 
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/PhysicsMaterial
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\egeme\OneDrive\Belgeler\GitHub\BallerinoOffline\Ballerino(offline)
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 37}
-    m_SelectedIDs: fe600000
-    m_LastClickedID: 24830
-    m_ExpandedIDs: 00000000ea600000ec600000ee60000000ca9a3b
+    m_SelectedIDs: 5e600000
+    m_LastClickedID: 24670
+    m_ExpandedIDs: 0000000020600000226000002460000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -751,7 +751,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ea600000ec600000ee600000
+    m_ExpandedIDs: 00000000206000002260000024600000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -776,9 +776,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 0c610000
-    m_LastClickedInstanceID: 24844
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300003263000042630000d26200008860000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

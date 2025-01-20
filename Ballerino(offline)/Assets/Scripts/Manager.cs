@@ -188,6 +188,8 @@ public class Manager : MonoBehaviour
     }
     private void EnablePlayerMovement(bool enable)
     {
+        player1.GetComponent<CardManager>().enabled = enable;
+        player2.GetComponent<CardManager>().enabled = enable;
         player1.GetComponent<PlayerControl>().enabled = enable;
         player2.GetComponent<PlayerControl>().enabled = enable;
     }

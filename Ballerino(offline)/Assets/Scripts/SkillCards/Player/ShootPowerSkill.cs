@@ -26,7 +26,7 @@ public class ShootPowerSkill : AbilityStrategy
     {
         player.shootPower += shootPowerBoost;
         await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: token).SuppressCancellationThrow();
-        player.shootPower -= shootPowerBoost;
+        player.shootPower = 2f;
         StartCooldown();
         IsEffectActive = false;
     }
