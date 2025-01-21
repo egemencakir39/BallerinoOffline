@@ -42,6 +42,7 @@ public class InvisibleBall : AbilityStrategy
         ınvisibleBallCts.Dispose();
         ınvisibleBallCts = null;
         IsEffectActive = false;
+        BallRenderer.enabled = true;
         StartCooldown();
     }
 }

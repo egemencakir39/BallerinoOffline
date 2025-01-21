@@ -38,7 +38,7 @@ public class SpeedSkill : AbilityStrategy
             speedCts.Cancel();
             speedCts.Dispose();
             speedCts = null;
-            player.moveSpeed = 7f;
+            player.moveSpeed = 6f;
             IsEffectActive = false;
             StartCooldown();
         }
