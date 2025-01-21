@@ -17,4 +17,4 @@ MonoBehaviour:
   cooldownTime: 20
   blockPrefab: {fileID: 4391272785158698393, guid: d349ea27afebdbd40ae067dbf5e1da4c, type: 3}
   duration: 10
-  blockPrefabSpawnPoint: {x: 7, y: 0}
+  blockPrefabSpawnPoint: {x: 6.5, y: 0}
