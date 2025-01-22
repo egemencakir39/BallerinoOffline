@@ -3,26 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class Manager : MonoBehaviour
 {
     
     [Header("Text")]
-    [SerializeField] private Text player1ScoreText;
-    [SerializeField] private Text player2ScoreText;
-    [SerializeField] private Text countDownText;
-    [SerializeField] private Text timerText;
+    [SerializeField] private TextMeshProUGUI player1ScoreText;
+    [SerializeField] private TextMeshProUGUI player2ScoreText;
+    [SerializeField] public TextMeshProUGUI countDownText;
+    [SerializeField] public TextMeshProUGUI timerText;
 
-    private int player1Score = 0;
-    private int player2Score = 0;
-
-    [Header("References")]
     [SerializeField] private Transform player1;
     [SerializeField] private Transform player2;
     [SerializeField] private Transform ball;
     [SerializeField] private CardManager cardManager;
     [SerializeField] private CardManager cardManager2;
     [SerializeField] private SoundManager soundManager;
+    [SerializeField] private Goal goal1;
+    [SerializeField] private Goal goal2;
+    
 
 
     [Header("Position")]
@@ -37,6 +37,10 @@ public class Manager : MonoBehaviour
     [Header("Timer")]
     [SerializeField] private float gameDuration = 300f;
     private float timer;
+    
+    
+    private int player1Score = 0;
+    private int player2Score = 0;
 
 
     private void Start()
@@ -91,10 +95,12 @@ public class Manager : MonoBehaviour
         player2Rb.angularVelocity = 0f;
 
         countDownText.gameObject.SetActive(true);
+       
         if (player1Score > player2Score)
         {
             countDownText.text = "Player 1 Wins!";
         }
+        
         else if (player2Score > player1Score)
         {
             countDownText.text = "Player 2 Wins";
@@ -103,6 +109,7 @@ public class Manager : MonoBehaviour
         {
             countDownText.text = "It's a Scoreless";
         }
+       
         soundManager.EndSound();
         StartCoroutine(HandleGameOver());
     }
@@ -192,6 +199,8 @@ public class Manager : MonoBehaviour
         player2.GetComponent<CardManager>().enabled = enable;
         player1.GetComponent<PlayerControl>().enabled = enable;
         player2.GetComponent<PlayerControl>().enabled = enable;
+        goal1.GetComponent<Goal>().enabled = enable;
+        goal2.GetComponent<Goal>().enabled = enable;
     }
 }
 
